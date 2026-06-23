@@ -1,0 +1,39 @@
+# APK / 安装包（不推送）
+*.apk
+*.aab
+releases/
+
+# 部署压缩包
+*.zip
+
+# Flutter
+flutter_app/.dart_tool/
+flutter_app/.flutter-plugins
+flutter_app/.flutter-plugins-dependencies
+flutter_app/.pub-cache/
+flutter_app/.pub/
+flutter_app/build/
+
+# Android 签名与本地配置
+**/local.properties
+**/key.properties
+**/*.jks
+**/*.keystore
+
+# Node.js 云函数依赖（部署时在云端 npm install）
+**/node_modules/
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# 环境与密钥
+.env
+.env.*
+*.pem
+
+# 日志
+*.log

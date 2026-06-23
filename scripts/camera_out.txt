@@ -1,0 +1,21 @@
+﻿=== CAMERA UI ===
+Search or type web address |  | [78,674][743,800]
+ | Start voice search | [775,674][901,800]
+ | Search with your camera using Google Lens | [901,674][1027,800]
+ | Navigate: 百度一下: www.baidu.com | [73,866][283,1074]
+ | Navigate: Directory listing for /: 10.0.2.2 | [314,866][524,1069]
+ | Navigate: Facebook: m.facebook.com | [555,866][765,1069]
+ | Navigate: YouTube: m.youtube.com | [796,866][1006,1069]
+ | Navigate: Amazon.com: www.amazon.com | [73,1089][283,1292]
+ | Navigate: Wikipedia: en.m.wikipedia.org | [314,1089][524,1292]
+ | Navigate: ESPN.com: www.espn.com | [555,1089][765,1292]
+ | Navigate: Yahoo: www.yahoo.com | [796,1089][1006,1292]
+ | Options for Discover | [985,1360][1038,1486]
+ | Home | [0,136][126,283]
+ | Switch or close tabs | [828,136][954,283]
+ | More options | [954,136][1080,283]
+left camera at (540, 2200) pkg changed
+left camera at (900, 2200) pkg changed
+left camera at (980, 2200) pkg changed
+left camera at (540, 2000) pkg changed
+left camera at (850, 2000) pkg changed

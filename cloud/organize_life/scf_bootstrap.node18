@@ -1,0 +1,2 @@
+#!/bin/bash
+/var/lang/node18/bin/node -r ./polyfill.js node_modules/@cloudbase/functions-framework/bin/tcb-ff.js --port=9000 --source=index.js --target=main --interceptOutput=false

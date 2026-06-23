@@ -1,0 +1,9 @@
+{
+  "name": "deal_my_life",
+  "version": "1.2.0",
+  "main": "index.js",
+  "dependencies": {
+    "@cloudbase/functions-framework": "1.12.0",
+    "wx-server-sdk": "latest"
+  }
+}

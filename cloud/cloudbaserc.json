@@ -1,0 +1,15 @@
+{
+  "envId": "madi-213-8gs6wu0se568f2d1-1302661085",
+  "functionRoot": "./",
+  "functions": [
+    {
+      "name": "organize_life",
+      "timeout": 60,
+      "runtime": "Nodejs18.15",
+      "memorySize": 256,
+      "handler": "index.main",
+      "installDependency": true,
+      "ignore": ["node_modules/.cache/**"]
+    }
+  ]
+}

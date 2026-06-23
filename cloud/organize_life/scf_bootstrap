@@ -1,0 +1,2 @@
+#!/bin/bash
+/var/lang/node20/bin/node node_modules/@cloudbase/functions-framework/bin/tcb-ff.js --port=9000 --source=index.js --target=main --interceptOutput=false

@@ -1,0 +1,13 @@
+[PASS] Home
+[PASS] Stats
+[PASS] Search
+[PASS] Settings
+[PASS] Cloud ping
+Ping detail: 连接正常
+[PASS] Category clothing
+[PASS] Add sheet
+After camera tap: <?xml version='1.0' encoding='UTF-8' standalone='yes' ?><hierarchy rotation="0"><node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="com.android.camera2" content-desc="" 
+[FAIL] Upload with progress
+[FAIL] Back home
+
+TOTAL 7/9

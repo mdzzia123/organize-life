@@ -1,0 +1,191 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:105549438319484129",
+      "lastPropertyId": "13:2086119464170389808",
+      "name": "CategoryEntity",
+      "properties": [
+        {
+          "id": "1:5760706068875535829",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1513122581892072364",
+          "name": "cloudId",
+          "indexId": "1:5604622927574249279",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "3:1796045059409752364",
+          "name": "slug",
+          "indexId": "2:4536149654404083280",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "4:691227488143775762",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "5:4655297118937412373",
+          "name": "icon",
+          "type": 9
+        },
+        {
+          "id": "6:5049989882870042852",
+          "name": "color",
+          "type": 9
+        },
+        {
+          "id": "7:9175222402264558405",
+          "name": "sortOrder",
+          "type": 6
+        },
+        {
+          "id": "8:5518099306752028082",
+          "name": "isSystem",
+          "type": 1
+        },
+        {
+          "id": "9:5093915919609929250",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "10:6529370800636351979",
+          "name": "updatedAt",
+          "type": 10
+        },
+        {
+          "id": "11:420892746569175079",
+          "name": "parentLocalId",
+          "type": 6
+        },
+        {
+          "id": "12:8439901810132768216",
+          "name": "parentCloudId",
+          "indexId": "5:3242001642591307251",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "13:2086119464170389808",
+          "name": "depth",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:547014499566678480",
+      "lastPropertyId": "16:5738298030483930867",
+      "name": "ItemEntity",
+      "properties": [
+        {
+          "id": "1:2660392381277599372",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1006931783331665950",
+          "name": "cloudId",
+          "indexId": "3:3496195649179787487",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "3:8167489757199002034",
+          "name": "categoryLocalId",
+          "type": 6
+        },
+        {
+          "id": "4:8826563589633552540",
+          "name": "categoryCloudId",
+          "indexId": "4:2649101114840178317",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "5:9098688877727754402",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "6:6635935754173735473",
+          "name": "note",
+          "type": 9
+        },
+        {
+          "id": "7:3478412980109392082",
+          "name": "localImagePath",
+          "type": 9
+        },
+        {
+          "id": "8:8956607395157935637",
+          "name": "cloudFileId",
+          "type": 9
+        },
+        {
+          "id": "9:6663287002992834315",
+          "name": "cloudPath",
+          "type": 9
+        },
+        {
+          "id": "10:5822852782192910593",
+          "name": "tagsRaw",
+          "type": 9
+        },
+        {
+          "id": "11:1670630005579267771",
+          "name": "syncStatusIndex",
+          "type": 6
+        },
+        {
+          "id": "12:2276465013998826599",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "13:8252711589691449830",
+          "name": "updatedAt",
+          "type": 10
+        },
+        {
+          "id": "14:5564536466170909697",
+          "name": "tags",
+          "type": 30
+        },
+        {
+          "id": "15:5143609040347936284",
+          "name": "colorsRaw",
+          "type": 9
+        },
+        {
+          "id": "16:5738298030483930867",
+          "name": "colors",
+          "type": 30
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:547014499566678480",
+  "lastIndexId": "5:3242001642591307251",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
