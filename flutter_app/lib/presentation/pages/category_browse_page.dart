@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app/app_background.dart';
 import '../../app/l10n_ext.dart';
 import '../../app/providers.dart';
 import '../../app/theme.dart';
@@ -77,7 +78,7 @@ class _CategoryBrowsePageState extends ConsumerState<CategoryBrowsePage> {
         return Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            backgroundColor: Colors.white.withValues(alpha: 0.92),
+            backgroundColor: translucentAppBar(context),
             title: Text(pageTitle, style: const TextStyle(fontWeight: FontWeight.bold)),
           ),
           floatingActionButton: FloatingActionButton(
@@ -100,7 +101,9 @@ class _CategoryBrowsePageState extends ConsumerState<CategoryBrowsePage> {
                             padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
                             child: Text(
                               l10n.subCategoriesHint(categories.length),
-                              style: TextStyle(color: Colors.grey[600], fontSize: 13),
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                                  ),
                             ),
                           ),
                         ),
@@ -161,8 +164,9 @@ class _CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final color = parseHexColor(category.color);
+    final onSurfaceVariant = Theme.of(context).colorScheme.onSurfaceVariant;
     return Material(
-      color: Colors.white.withValues(alpha: 0.94),
+      color: translucentSurface(context),
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
@@ -194,11 +198,11 @@ class _CategoryCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       l10n.itemsCount(itemCount),
-                      style: TextStyle(color: Colors.grey[600], fontSize: 11),
+                      style: TextStyle(color: onSurfaceVariant, fontSize: 11),
                     ),
                   ),
                   if (hasChildren)
-                    Icon(Icons.chevron_right, size: 16, color: Colors.grey[500]),
+                    Icon(Icons.chevron_right, size: 16, color: onSurfaceVariant),
                 ],
               ),
             ],

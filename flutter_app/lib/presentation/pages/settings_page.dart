@@ -270,6 +270,14 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           children: [
             ListTile(title: Text(l10n.background, style: Theme.of(ctx).textTheme.titleMedium)),
             ListTile(
+              leading: const Icon(Icons.brightness_auto_outlined),
+              title: Text(l10n.backgroundFollowTheme),
+              onTap: () async {
+                Navigator.pop(ctx);
+                await ref.read(appBackgroundProvider.notifier).setFollowTheme();
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.palette_outlined),
               title: Text(l10n.pickBgColor),
               onTap: () async {
@@ -340,11 +348,11 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           ),
           ListTile(
             title: Text(l10n.background),
-            subtitle: Text(
-              ref.watch(appBackgroundProvider).type == AppBackgroundType.image
-                  ? l10n.backgroundImage
-                  : l10n.backgroundSolid,
-            ),
+            subtitle: Text(switch (ref.watch(appBackgroundProvider).type) {
+              AppBackgroundType.image => l10n.backgroundImage,
+              AppBackgroundType.solid => l10n.backgroundSolid,
+              AppBackgroundType.theme => l10n.backgroundFollowTheme,
+            }),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _pickBackground(context),
           ),

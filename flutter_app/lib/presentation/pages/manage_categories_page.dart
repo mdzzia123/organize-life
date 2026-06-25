@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app/app_background.dart';
 import '../../app/providers.dart';
 import '../widgets/category_tree/category_editor.dart';
 import '../widgets/category_tree/category_expandable_tree.dart';
@@ -26,7 +27,7 @@ class _ManageCategoriesPageState extends ConsumerState<ManageCategoriesPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.white.withValues(alpha: 0.92),
+        backgroundColor: translucentAppBar(context),
         title: Text(l10n.manageCategories),
       ),
       body: FutureBuilder(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app/app_background.dart';
 import '../../app/l10n_ext.dart';
 import '../../app/providers.dart';
 import '../../app/theme.dart';
@@ -138,7 +139,7 @@ class _ItemDetailPageState extends ConsumerState<ItemDetailPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.white.withValues(alpha: 0.92),
+        backgroundColor: translucentAppBar(context),
         title: Text(widget.categoryName ?? l10n.addItem),
         actions: [
           if (item.syncStatus == SyncStatus.failed)
@@ -163,7 +164,10 @@ class _ItemDetailPageState extends ConsumerState<ItemDetailPage> {
                 Container(
                   height: 200,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(12)),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   child: const Icon(Icons.image_not_supported, size: 48),
                 ),
               const SizedBox(height: 12),
@@ -173,7 +177,7 @@ class _ItemDetailPageState extends ConsumerState<ItemDetailPage> {
                   const SizedBox(width: 8),
                   Text(
                     item.createdAt.toString().substring(0, 16),
-                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                    style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant, fontSize: 12),
                   ),
                 ],
               ),

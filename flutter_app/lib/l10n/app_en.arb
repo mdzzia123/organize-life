@@ -135,6 +135,7 @@
   "loggedOut": "Signed out",
   "subCategoriesHint": "{count} subcategories",
   "background": "Background",
+  "backgroundFollowTheme": "Follow theme",
   "backgroundSolid": "Solid color",
   "backgroundImage": "Image background",
   "pickBgColor": "Pick background color",

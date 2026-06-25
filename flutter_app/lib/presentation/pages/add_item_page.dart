@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../../app/app_background.dart';
 import '../../app/l10n_ext.dart';
 import '../../app/providers.dart';
 import '../../data/models/entities.dart';
@@ -157,7 +158,7 @@ class _AddItemPageState extends ConsumerState<AddItemPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.white.withValues(alpha: 0.92),
+        backgroundColor: translucentAppBar(context),
         title: Text(l10n.createItem),
         actions: [
           Padding(

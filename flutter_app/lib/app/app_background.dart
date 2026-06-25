@@ -7,11 +7,11 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum AppBackgroundType { solid, image }
+enum AppBackgroundType { theme, solid, image }
 
 class AppBackgroundSettings {
   const AppBackgroundSettings({
-    this.type = AppBackgroundType.solid,
+    this.type = AppBackgroundType.theme,
     this.solidColor = '#F5F6FA',
     this.imagePath = '',
   });
@@ -48,12 +48,35 @@ class AppBackgroundNotifier extends StateNotifier<AppBackgroundSettings> {
 
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
-    final typeStr = prefs.getString(_typeKey) ?? 'solid';
+    final typeStr = prefs.getString(_typeKey);
+    final savedColor = prefs.getString(_colorKey) ?? '';
+    final imagePath = prefs.getString(_imageKey) ?? '';
+
+    AppBackgroundType type;
+    if (typeStr == 'image') {
+      type = AppBackgroundType.image;
+    } else if (typeStr == 'solid' && savedColor.isNotEmpty && savedColor.toUpperCase() != '#F5F6FA') {
+      type = AppBackgroundType.solid;
+    } else if (typeStr == 'solid') {
+      // 旧版默认浅灰背景 → 迁移为跟随主题
+      type = AppBackgroundType.theme;
+    } else {
+      type = AppBackgroundType.theme;
+    }
+
     state = AppBackgroundSettings(
-      type: typeStr == 'image' ? AppBackgroundType.image : AppBackgroundType.solid,
-      solidColor: prefs.getString(_colorKey) ?? '#F5F6FA',
-      imagePath: prefs.getString(_imageKey) ?? '',
+      type: type,
+      solidColor: savedColor.isNotEmpty ? savedColor : '#F5F6FA',
+      imagePath: imagePath,
     );
+  }
+
+  Future<void> setFollowTheme() async {
+    state = const AppBackgroundSettings(type: AppBackgroundType.theme);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_typeKey, 'theme');
+    await prefs.remove(_colorKey);
+    await prefs.remove(_imageKey);
   }
 
   Future<void> setSolidColor(Color color) async {
@@ -83,11 +106,7 @@ class AppBackgroundNotifier extends StateNotifier<AppBackgroundSettings> {
   }
 
   Future<void> resetDefault() async {
-    state = const AppBackgroundSettings();
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_typeKey);
-    await prefs.remove(_colorKey);
-    await prefs.remove(_imageKey);
+    await setFollowTheme();
   }
 }
 
@@ -96,6 +115,14 @@ Color parseBgColor(String hex) {
   if (h.length == 6) h = 'FF$h';
   return Color(int.parse(h, radix: 16));
 }
+
+/// 半透明 AppBar，随深浅色主题变化
+Color translucentAppBar(BuildContext context) =>
+    Theme.of(context).colorScheme.surface.withValues(alpha: 0.92);
+
+/// 半透明卡片/列表项表面
+Color translucentSurface(BuildContext context) =>
+    Theme.of(context).colorScheme.surface.withValues(alpha: 0.94);
 
 /// 全局背景层
 class AppBackground extends ConsumerWidget {
@@ -106,16 +133,22 @@ class AppBackground extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bg = ref.watch(appBackgroundProvider);
+    final theme = Theme.of(context);
+
     Widget background;
-    if (bg.type == AppBackgroundType.image && bg.imagePath.isNotEmpty && File(bg.imagePath).existsSync()) {
+    if (bg.type == AppBackgroundType.image &&
+        bg.imagePath.isNotEmpty &&
+        File(bg.imagePath).existsSync()) {
       background = DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(image: FileImage(File(bg.imagePath)), fit: BoxFit.cover),
         ),
         child: const SizedBox.expand(),
       );
-    } else {
+    } else if (bg.type == AppBackgroundType.solid) {
       background = ColoredBox(color: parseBgColor(bg.solidColor));
+    } else {
+      background = ColoredBox(color: theme.scaffoldBackgroundColor);
     }
 
     return Stack(

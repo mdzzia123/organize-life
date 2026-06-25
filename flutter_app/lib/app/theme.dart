@@ -15,7 +15,6 @@ class AppTheme {
       cardTheme: CardThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: Colors.white,
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         elevation: 2,

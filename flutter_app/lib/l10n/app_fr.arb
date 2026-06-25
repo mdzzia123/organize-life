@@ -135,6 +135,7 @@
   "loggedOut": "Déconnecté",
   "subCategoriesHint": "{count} sous-catégories",
   "background": "Arrière-plan",
+  "backgroundFollowTheme": "Suivre le thème",
   "backgroundSolid": "Couleur unie",
   "backgroundImage": "Image de fond",
   "pickBgColor": "Choisir la couleur",

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app/app_background.dart';
 import '../../app/l10n_ext.dart';
 import '../../app/providers.dart';
 import '../../app/theme.dart';
@@ -106,9 +107,9 @@ class _CategoryItemsPageState extends ConsumerState<CategoryItemsPage> {
         if (!didPop) Navigator.of(context).pop(_dirty);
       },
       child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Colors.white.withValues(alpha: 0.92),
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: translucentAppBar(context),
           title: Text(categoryName),
           leading: BackButton(onPressed: () => Navigator.of(context).pop(_dirty)),
         ),
@@ -144,7 +145,7 @@ class _CategoryItemsPageState extends ConsumerState<CategoryItemsPage> {
                                   child: Text(
                                     l10n.noItemsHint,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(color: Colors.grey[600]),
+                                    style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
                                   ),
                                 ),
                               ),
@@ -208,7 +209,7 @@ class _ItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white.withValues(alpha: 0.94),
+      color: translucentSurface(context),
       borderRadius: BorderRadius.circular(12),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -223,7 +224,10 @@ class _ItemTile extends StatelessWidget {
                   if (item.localImagePath.isNotEmpty && File(item.localImagePath).existsSync())
                     Image.file(File(item.localImagePath), fit: BoxFit.cover)
                   else
-                    Container(color: Colors.grey[200], child: const Icon(Icons.image_not_supported)),
+                    Container(
+                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                      child: const Icon(Icons.image_not_supported),
+                    ),
                   Positioned(
                     top: 6,
                     right: 6,

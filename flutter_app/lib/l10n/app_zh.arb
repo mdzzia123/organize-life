@@ -168,6 +168,7 @@
   "subCategoriesHint": "{count} 个子分类",
   "@subCategoriesHint": {"placeholders": {"count": {"type": "int"}}},
   "background": "背景",
+  "backgroundFollowTheme": "跟随主题",
   "backgroundSolid": "纯色背景",
   "backgroundImage": "图片背景",
   "pickBgColor": "选择背景色",

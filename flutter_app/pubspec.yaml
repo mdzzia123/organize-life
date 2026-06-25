@@ -1,7 +1,7 @@
 name: organize_life
 description: 整理人生 - 多分类生活图片管理 App
 publish_to: 'none'
-version: 1.5.2+8
+version: 1.5.3+9
 
 environment:
   sdk: '>=3.2.0 <4.0.0'

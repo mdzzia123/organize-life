@@ -135,6 +135,7 @@
   "loggedOut": "Sesión cerrada",
   "subCategoriesHint": "{count} subcategorías",
   "background": "Fondo",
+  "backgroundFollowTheme": "Seguir tema",
   "backgroundSolid": "Color sólido",
   "backgroundImage": "Imagen de fondo",
   "pickBgColor": "Elegir color de fondo",

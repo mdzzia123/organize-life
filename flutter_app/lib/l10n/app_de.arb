@@ -135,6 +135,7 @@
   "loggedOut": "Abgemeldet",
   "subCategoriesHint": "{count} Unterkategorien",
   "background": "Hintergrund",
+  "backgroundFollowTheme": "Design folgen",
   "backgroundSolid": "Einfarbig",
   "backgroundImage": "Bildhintergrund",
   "pickBgColor": "Hintergrundfarbe waehlen",
